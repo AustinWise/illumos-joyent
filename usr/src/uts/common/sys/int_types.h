@@ -80,7 +80,11 @@ typedef short			int16_t;
 typedef int			int32_t;
 #ifdef	_LP64
 #define	_INT64_TYPE
+#if defined(_MSC_VER)
+typedef __int64			int64_t;
+#else /*_MSC_VER*/
 typedef long			int64_t;
+#endif /*_MSC_VER*/
 #else	/* _ILP32 */
 #if defined(_LONGLONG_TYPE)
 #define	_INT64_TYPE
@@ -92,7 +96,11 @@ typedef unsigned char		uint8_t;
 typedef unsigned short		uint16_t;
 typedef unsigned int		uint32_t;
 #ifdef	_LP64
+#if defined(_MSC_VER)
+typedef unsigned __int64		uint64_t;
+#else /*_MSC_VER*/
 typedef unsigned long		uint64_t;
+#endif /*_MSC_VER*/
 #else	/* _ILP32 */
 #if defined(_LONGLONG_TYPE)
 typedef unsigned long long	uint64_t;
@@ -117,8 +125,13 @@ typedef uint32_t		uintmax_t;
  * from these integer types without losing precision.
  */
 #if defined(_LP64) || defined(_I32LPx)
+#if defined(_MSC_VER)
+typedef __int64			intptr_t;
+typedef unsigned __int64		uintptr_t;
+#else /*_MSC_VER*/
 typedef long			intptr_t;
 typedef unsigned long		uintptr_t;
+#endif /*_MSC_VER*/
 #else
 typedef	int			intptr_t;
 typedef	unsigned int		uintptr_t;
@@ -147,7 +160,11 @@ typedef unsigned char		uint_fast8_t;
 typedef unsigned int		uint_fast16_t;
 typedef unsigned int		uint_fast32_t;
 #ifdef	_LP64
+#if defined(_MSC_VER)
+typedef unsigned __int64		uint_fast64_t;
+#else /*_MSC_VER*/
 typedef unsigned long		uint_fast64_t;
+#endif /*_MSC_VER*/
 #else	/* _ILP32 */
 #if defined(_LONGLONG_TYPE)
 typedef unsigned long long	uint_fast64_t;
@@ -166,7 +183,11 @@ typedef signed char		int_least8_t;
 typedef short			int_least16_t;
 typedef int			int_least32_t;
 #ifdef	_LP64
+#if defined(_MSC_VER)
+typedef __int64			int_least64_t;
+#else /*_MSC_VER*/
 typedef long			int_least64_t;
+#endif /*_MSC_VER*/
 #else	/* _ILP32 */
 #if defined(_LONGLONG_TYPE)
 typedef long long		int_least64_t;
@@ -177,7 +198,11 @@ typedef unsigned char		uint_least8_t;
 typedef unsigned short		uint_least16_t;
 typedef unsigned int		uint_least32_t;
 #ifdef	_LP64
+#if defined(_MSC_VER)
+typedef unsigned __int64		uint_least64_t;
+#else /*_MSC_VER*/
 typedef unsigned long		uint_least64_t;
+#endif /*_MSC_VER*/
 #else	/* _ILP32 */
 #if defined(_LONGLONG_TYPE)
 typedef unsigned long long	uint_least64_t;

@@ -100,16 +100,28 @@ typedef unsigned long	t_uscalar_t;
 typedef	unsigned char	uchar_t;
 typedef	unsigned short	ushort_t;
 typedef	unsigned int	uint_t;
+#if defined(_MSC_VER)
+typedef	unsigned __int64	ulong_t;
+#else /*_MSC_VER*/
 typedef	unsigned long	ulong_t;
+#endif /*_MSC_VER*/
 
 typedef	char		*caddr_t;	/* ?<core address> type */
+#if defined(_MSC_VER)
+typedef	__int64		daddr_t;	/* <disk address> type */
+#else /*_MSC_VER*/
 typedef	long		daddr_t;	/* <disk address> type */
+#endif /*_MSC_VER*/
 typedef	short		cnt_t;		/* ?<count> type */
 
 #if !defined(_PTRDIFF_T) || __cplusplus >= 199711L
 #define	_PTRDIFF_T
 #if defined(_LP64) || defined(_I32LPx)
+#if defined(_MSC_VER)
+typedef	__int64	ptrdiff_t;		/* pointer difference */
+#else /*_MSC_VER*/
 typedef	long	ptrdiff_t;		/* pointer difference */
+#endif /*_MSC_VER*/
 #else
 typedef	int	ptrdiff_t;		/* (historical version) */
 #endif
@@ -120,7 +132,11 @@ typedef	int	ptrdiff_t;		/* (historical version) */
  */
 typedef	ulong_t		pfn_t;		/* page frame number */
 typedef	ulong_t		pgcnt_t;	/* number of pages */
+#if defined(_MSC_VER)
+typedef	__int64		spgcnt_t;	/* signed number of pages */
+#else /*_MSC_VER*/
 typedef	long		spgcnt_t;	/* signed number of pages */
+#endif /*_MSC_VER*/
 
 typedef	uchar_t		use_t;		/* use count for swap.  */
 typedef	short		sysid_t;
@@ -157,7 +173,11 @@ typedef longlong_t	off64_t;	/* offsets within files */
 
 #if defined(_LP64) || _FILE_OFFSET_BITS == 32
 typedef ulong_t		ino_t;		/* expanded inode type	*/
+#if defined(_MSC_VER)
+typedef __int64		blkcnt_t;	/* count of file blocks */
+#else /*_MSC_VER*/
 typedef long		blkcnt_t;	/* count of file blocks */
+#endif /*_MSC_VER*/
 typedef ulong_t		fsblkcnt_t;	/* count of file system blocks */
 typedef ulong_t		fsfilcnt_t;	/* count of files */
 #elif _FILE_OFFSET_BITS == 64
@@ -533,7 +553,11 @@ typedef int	ssize_t;	/* (historical version) */
 
 #if !defined(_TIME_T) || __cplusplus >= 199711L
 #define	_TIME_T
+#if defined(_MSC_VER)
+typedef	__int64		time_t;	/* time of day in seconds */
+#else
 typedef	long		time_t;	/* time of day in seconds */
+#endif
 #endif	/* _TIME_T */
 
 #if !defined(_CLOCK_T) || __cplusplus >= 199711L

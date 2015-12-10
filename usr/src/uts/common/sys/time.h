@@ -37,7 +37,11 @@ extern "C" {
 
 #if !defined(_TIME_T) || __cplusplus >= 199711L
 #define	_TIME_T
-typedef	long	time_t;		/* time of day in seconds */
+#if defined(_MSC_VER)
+	typedef	__int64	time_t;		/* time of day in seconds */
+#else
+	typedef	long	time_t;		/* time of day in seconds */
+#endif
 #endif	/* _TIME_T */
 
 #ifndef	_SUSECONDS_T
