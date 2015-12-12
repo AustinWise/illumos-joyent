@@ -149,7 +149,11 @@ typedef signed char		int_fast8_t;
 typedef int			int_fast16_t;
 typedef int			int_fast32_t;
 #ifdef	_LP64
+#ifdef _MSC_VER
+typedef __int64			int_fast64_t;
+#else
 typedef long			int_fast64_t;
+#endif
 #else	/* _ILP32 */
 #if defined(_LONGLONG_TYPE)
 typedef long long		int_fast64_t;

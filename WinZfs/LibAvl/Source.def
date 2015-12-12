@@ -16,6 +16,3 @@ avl_numnodes
 avl_remove
 avl_swap
 avl_walk
-
-assfail
-assfail3

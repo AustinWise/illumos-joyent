@@ -35,7 +35,9 @@
 
 #include <sys/types.h>
 #include <rpc/rpc.h>
+#ifndef _MSC_VER
 #include <netconfig.h>
+#endif
 
 #ifdef	__cplusplus
 extern "C" {

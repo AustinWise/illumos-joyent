@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{acabbbb3-1749-44ab-8a49-e7b414c2d7ea}</ProjectGuid>
+    <ProjectGuid>{81a8e57b-7cdb-45fc-a6c0-20a553c9de7e}</ProjectGuid>
     <Keyword>Clang</Keyword>
-    <RootNamespace>LibAvl</RootNamespace>
+    <RootNamespace>libnvpair</RootNamespace>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -53,34 +53,29 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <ExceptionHandling>Enabled</ExceptionHandling>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">WIN32;_DEBUG;_WINDOWS;_USRDLL;LibAvl_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">WIN32;NDEBUG;_WINDOWS;_USRDLL;LibAvl_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_DEBUG;_WINDOWS;_USRDLL;LibAvl_EXPORTS;_LP64;_LONGLONG_TYPE;_CRT_NO_TIME_T;__amd64;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NDEBUG;_WINDOWS;_USRDLL;LibAvl_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\externsrc\illumos-joyent\usr\src\uts\intel\;C:\externsrc\illumos-joyent\usr\src\uts\common\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\externsrc\illumos-joyent\usr\src\uts\intel;C:\externsrc\illumos-joyent\usr\src\uts\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">WIN32;_DEBUG;_WINDOWS;_USRDLL;libnvpair_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">WIN32;NDEBUG;_WINDOWS;_USRDLL;libnvpair_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_DEBUG;_WINDOWS;_USRDLL;libnvpair_EXPORTS;_LP64;_LONGLONG_TYPE;_CRT_NO_TIME_T;__amd64;DEBUG;TEXT_DOMAIN="lib";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NDEBUG;_WINDOWS;_USRDLL;libnvpair_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\externsrc\illumos-joyent\usr\src\head;C:\externsrc\illumos-joyent\usr\src\uts\intel;C:\externsrc\illumos-joyent\usr\src\uts\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">-Wno-unknown-pragmas %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Source.def</ModuleDefinitionFile>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Source.def</ModuleDefinitionFile>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Source.def</ModuleDefinitionFile>
-      <ModuleDefinitionFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\usr\src\common\avl\avl.c" />
-    <ClCompile Include="assfail.c" />
+    <ClCompile Include="..\..\usr\src\common\nvpair\fnvpair.c" />
+    <ClCompile Include="..\..\usr\src\common\nvpair\nvpair.c" />
+    <ClCompile Include="..\..\usr\src\common\nvpair\nvpair_alloc_fixed.c" />
+    <ClCompile Include="..\..\usr\src\lib\libnvpair\libnvpair.c" />
+    <ClCompile Include="..\..\usr\src\lib\libnvpair\nvpair_alloc_system.c" />
+    <ClCompile Include="..\..\usr\src\lib\libnvpair\nvpair_json.c" />
     <ClCompile Include="dllmain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\usr\src\uts\common\sys\avl.h" />
-    <ClInclude Include="..\..\usr\src\uts\common\sys\avl_impl.h" />
-    <ClInclude Include="LibAvl.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Source.def" />
+    <ClInclude Include="..\..\usr\src\lib\libnvpair\libnvpair.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\illumos-libc\illumos-libc.vcxproj">

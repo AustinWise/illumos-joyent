@@ -145,7 +145,13 @@ extern char *strdup(const char *);
  * gcc provides this inlining facility but Studio C does not.
  * We should use it exclusively once Studio C also provides it.
  */
+
+#ifdef _MSC_VER
+extern void *__builtin_alloca(unsigned long long);
+#else
 extern void *__builtin_alloca(size_t);
+#endif // _MSC_VER
+
 
 #define	strdupa(s)							\
 	(__extension__(							\
